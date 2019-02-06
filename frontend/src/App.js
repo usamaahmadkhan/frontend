@@ -8,12 +8,15 @@ class App extends Component {
     response: ''
   }
 
-  componentDidMount() {
-    fetch("http://localhost").then(result => 
+  componentDidMount() { 
+    fetch("http://backend-service").then(result => 
     {
       return result.json()
-    }).then(response => this.setState({response}))
-  }
+    }).then(data => {
+		const response = data.result;
+		this.setState({response});
+	})
+}
   render() {
     const { response } = this.state;
     return (
